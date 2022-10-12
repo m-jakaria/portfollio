@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--projecttitle--><title>panolens</title><!--projecttitle-end-->
+		<!--projectdescription--><meta name="description" content="New 3Sixty Virtual Tour Project"><!--projectdescription-end-->
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, shrink-to-fit=no">
+
+		<link rel="stylesheet" type="text/css" href="{{ asset('panoramas/css/font-awesome.css')}}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('panoramas/style.css')}}">
+
+		<!-- Insert this line above script imports  -->
+		<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+		<script src="{{ asset('panoramas/imagedata.js')}}"></script>
+		<script src="{{ asset('panoramas/jquery.js')}}"></script>
+		<script src="{{ asset('panoramas/three.min.js')}}"></script>
+		<script src="{{ asset('panoramas/panolens.min.js')}}"></script>
+
+		<!-- Insert this line after script imports -->
+		<script>if (window.module) module = window.module;</script>
+
+		<style>
+
+
+
+			/* SCROLLBAR STYLING */
+			/* width */
+			::-webkit-scrollbar {
+				width: 0.25em;
+				height: 0.25em;
+			}
+			/* Track */
+			::-webkit-scrollbar-track {
+				background: #2c3643;
+			}
+			/* Handle */
+			::-webkit-scrollbar-thumb {
+				background: #0d9e59;
+				transition: background .5s;
+			}
+			/* Handle on hover */
+			::-webkit-scrollbar-thumb:hover {
+				background: #00e075;
+			}
+
+
+			html, body {
+				margin: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				background-color: #000;
+				color; black;
+			}
+
+			a:link, a:visited{
+				color: #bdc3c7;
+			}
+
+			.fullwrapper{
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: black;
+			}
+
+			#container {
+                width: 100%;
+                height: 100%;
+            }
+
+			#tmp{
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				padding: 3em;
+				background-color: rgba(0,0,0,.5);
+				backdrop-filter: blur(5px);
+				display: none;
+			}
+		</style>
+	</head>
+	<body id="body">
+	    <div id="container" style="color: black;"></div>
+
+
+
+		<!--customhtml--><div class='customhotspot' id='image1'></div><div class='customhotspot' id='image2'></div><div class='customhotspot' id='image3'><div onclick='chclickinfospotimage30();' id='infospotimage30' style='position: fixed; top: 0; left: 0; cursor: pointer;'><img src='{{ asset('panoramas/customhotspots/chevronforward.png')}}' style='width: 64px; height: 64px;'></div></div><!--customhtml-end-->
+
+		<div id="tmp">
+			<div style="width: 100%; height: 100%; overflow: hidden; overflow-y: auto; box-sizing: border-box; position: relative;" id="tmpcontent"></div>
+			<div class="mediaclosebutton" onclick="hideTemp()"><i class="fa fa-times-circle"></i></div>
+		</div>
+
+
+		<div id="loading" class="fullwrapper" style="display: table; width: 100%; height: 100%;">
+    		<div style="display: table-cell; vertical-align: middle; text-align: center; color: white; font-size: 30px; padding: 50px;">
+    			<!--loadingtext-->Loading...<!--loadingtext-end-->
+    		</div>
+    	</div>
+
+    	<script>
+
+            var container = document.querySelector( '#container' );
+			/*panolens*/
+
+var viewer = new PANOLENS.Viewer( { container: container , controlBar: false,  output: 'console' , autoHideInfospot: false, } );
+
+/*panolens-end*/
+
+			viewer.addUpdateCallback(function(){});
+
+			/*panoramas*/
+
+var image1 = new PANOLENS.ImagePanorama( "{{asset('panoramas/panoramas/image1.jpg')}}" );
+			image1.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			image1.addEventListener('load', function(e){
+				//$("#loading").fadeOut();
+			});
+			image1.addEventListener('click', function(e){
+			});
+
+
+viewer.add( image1 );
+
+var image2 = new PANOLENS.ImagePanorama( "{{asset('panoramas/panoramas/image2.jpg')}}" );
+			image2.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			image2.addEventListener('load', function(e){
+				//$("#loading").fadeOut();
+			});
+			image2.addEventListener('click', function(e){
+			});
+
+
+var infospotimage20 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotimage20.position.set( 4561.66, -1882.84, -759.64 );
+					image2.add(infospotimage20);
+
+infospotimage20.addEventListener('click', function(){
+
+showMedia(1, '{{asset('panoramas/images/kaos2.jpg')}}');
+
+});
+
+var infospotimage21 = new PANOLENS.Infospot( 512, hotspotIcons[11].data, true );
+					infospotimage21.position.set( 749.05, 338.46, -4923.30 );
+					image2.add(infospotimage21);
+
+infospotimage21.addEventListener('click', function(){
+
+window.open( 'https://www.pinterest.com/pin/create/bookmarklet/?url=https%3A%2F%2Fceklist.id%2F7776%2Fkaos-basic-pria-terbaik%2F&media=https%3A%2F%2Fceklist.id%2Fwp-content%2Fuploads%2F2020%2F10%2FGildan.jpg&description=10%20Rekomendasi%20Kaos%20Basic%20Polos%20Pria%20Terbaik%20(Terbaru%202022)', '_blank');
+
+});
+
+var infospotimage22 = new PANOLENS.Infospot( 512, hotspotIcons[6].data, true );
+					infospotimage22.position.set( 526.35, -2413.03, -4340.00 );
+					image2.add(infospotimage22);
+
+infospotimage22.addEventListener('click', function(){
+
+ChangePanorama('image3');
+
+});
+
+viewer.add( image2 );
+
+var image3 = new PANOLENS.ImagePanorama( "{{asset('panoramas/panoramas/image3.jpg')}}" );
+			image3.addEventListener('progress', function(e){
+				$("#loading").show();
+			});
+			image3.addEventListener('load', function(e){
+				//$("#loading").fadeOut();
+			});
+			image3.addEventListener('click', function(e){
+			});
+
+
+var infospotimage30 = new PANOLENS.Infospot( 512, hotspotIcons[0].data, true );
+					infospotimage30.position.set( -4652.87, -1732.23, 538.48 );
+					infospotimage30.visible = false;
+					image3.add(infospotimage30);
+
+infospotimage30.addEventListener('click', function(){
+
+ChangePanorama('image2');
+
+});
+
+viewer.add( image3 );
+
+$(document).ready(function(){ ChangePanorama('image2'); });
+
+
+/*panoramas-end*/
+
+
+			function hideTemp(){
+				$("#tmp").fadeOut();
+				setTimeout(function(){
+					$("#tmpcontent").html("");
+				},1000);
+			}
+
+			function showMedia(type, content){
+				switch(type){
+					case 1 :
+						//Image
+						$("#tmpcontent").html("<img src='"+content+"' style='width: 100%;'>");
+						$("#tmp").fadeIn();
+						break;
+					case 2 :
+						//Video
+						$("#tmpcontent").html("<video id='webvideo' controls autoplay style='width: 100%; height: 100%;'><source src='" +content+ "' type='video/mp4'> Your browser does not support the video tag. </video>");
+						$("#tmp").fadeIn();
+						break;
+					case 3 :
+						//Audio
+						$("#tmpcontent").html("<audio controls style='width: 100%;'><source src='"+content+"' type='audio/ogg'>Your browser does not support the audio tag.</audio>");
+						$("#tmp").fadeIn();
+						break;
+					case 4 :
+						//PDF
+						$("#tmpcontent").html("<iframe src='pdfjs/web/viewer.html?file=../../"+content+"' style='width: 100%; height: 99%;'></iframe>");
+						$("#tmp").fadeIn();
+						break;
+				}
+			}
+
+
+
+			//Update Callback
+			viewer.addUpdateCallback(function(){
+
+				/*viewerupdatecallback*/
+if(viewer.panorama == image1){
+}
+
+if(viewer.panorama == image2){
+}
+
+if(viewer.panorama == image3){
+ShowMyInfospot(infospotimage30, 'infospotimage30');
+}
+/*viewerupdatecallback-end*/
+
+
+			});
+
+
+
+			var hotspotsvisible = true;
+			function ShowMyInfospot(hs, elid){
+				var thehs = toScreenPosition(hs);
+				if(thehs.z < 1){
+					$("#" + elid).css({
+						"top" : (thehs.y - ($("#" + elid).height()/2)) + "px",
+						"left" : (thehs.x - ($("#" + elid).width()/2)) + "px",
+					});
+					if(hotspotsvisible)
+						$("#" + elid).show();
+				}else{
+					$("#" + elid).hide();
+				}
+
+			}
+
+			function toScreenPosition(obj)
+			{
+				var vector = new THREE.Vector3();
+				var widthHalf = 0.5 * innerWidth;
+				var heightHalf = 0.5 * innerHeight;
+
+				//obj.updateMatrixWorld();
+				vector.setFromMatrixPosition(obj.matrixWorld);
+
+
+				vector.project(viewer.camera);
+
+				vector.x = ( vector.x * widthHalf ) + widthHalf;
+				vector.y = - ( vector.y * heightHalf ) + heightHalf;
+
+
+				return {
+					x: vector.x,
+					y: vector.y,
+					z: vector.z,
+				};
+
+			};
+
+			var currentPanorama;
+			function ChangePanorama(panorama){
+				currentPanorama = panorama;
+				HideInfospots();
+				$("#loading").fadeIn();
+				//$(".customhotspot").fadeOut();
+				setTimeout(function(){
+					viewer.setPanorama(window[panorama]);
+				}, 100);
+				setTimeout(function(){
+					$("#" + panorama).fadeIn();
+					$("#loading").fadeOut();
+				}, 1000);
+
+			}
+
+
+
+			function HideInfospots(){
+				$(".customhotspot").fadeOut();
+			}
+
+			/*customjs*/
+function chclickinfospotimage30(){
+ChangePanorama('image2');
+
+}
+/*customjs-end*/
+        </script>
+	</body>
+</html>
